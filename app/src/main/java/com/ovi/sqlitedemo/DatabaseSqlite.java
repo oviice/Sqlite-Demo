@@ -43,10 +43,11 @@ public class DatabaseSqlite extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from "+TABLE_NAME,null);
         return res;
-    }public Cursor Delete() {
+    }
+
+    public void delete() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from "+TABLE_NAME,null);
-        return res;
+        db.delete(TABLE_NAME,null,null);
     }
 
 }

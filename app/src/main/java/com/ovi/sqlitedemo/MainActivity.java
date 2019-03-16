@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     EditText id,name,phnNum;
-    Button add,view;
+    Button add,view,delete;
     DatabaseSqlite myDb;
 TextView textView;
     @Override
@@ -30,7 +30,14 @@ TextView textView;
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 ViewData();
+            }
+        });
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDb.delete();
             }
         });
     }
@@ -72,12 +79,13 @@ TextView textView;
     }
 
     public void initiateAll(){
-        id=(EditText)findViewById(R.id.id);
-        name=(EditText)findViewById(R.id.name);
-        phnNum=(EditText)findViewById(R.id.PhoneNumber);
-        add=(Button)findViewById(R.id.addButton);
-        view=(Button)findViewById(R.id.View);
+        id=findViewById(R.id.id);
+        name=findViewById(R.id.name);
+        phnNum=findViewById(R.id.PhoneNumber);
+        add=findViewById(R.id.addButton);
+        view=findViewById(R.id.View);
         textView=findViewById(R.id.textView);
+        delete=findViewById(R.id.delete);
     }
 
 }
