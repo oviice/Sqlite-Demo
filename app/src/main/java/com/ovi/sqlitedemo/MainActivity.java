@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     EditText id,name,phnNum;
-    Button add,view,delete;
+    Button add,view,delete,update;
     DatabaseSqlite myDb;
 TextView textView;
     @Override
@@ -25,6 +25,7 @@ TextView textView;
             @Override
             public void onClick(View v) {
                 AddData();
+                clearText();
             }
         });
         view.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +39,13 @@ TextView textView;
             @Override
             public void onClick(View v) {
                 myDb.delete();
+            }
+        });
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                update();
+                clearText();
             }
         });
     }
@@ -86,6 +94,22 @@ TextView textView;
         view=findViewById(R.id.View);
         textView=findViewById(R.id.textView);
         delete=findViewById(R.id.delete);
+        update=findViewById(R.id.updateId);
+    }
+    public void update() {
+        boolean isInsert=(myDb.update(id.getText().toString(),name.getText().toString(),phnNum.getText().toString()));
+        if (isInsert=true){
+            Toast.makeText(MainActivity.this,"Data Update successfull",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(MainActivity.this,"Data update unsuccessfull",Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    private void clearText(){
+        id.setText("");
+        name.setText("");
+        phnNum.setText("");
     }
 
 }

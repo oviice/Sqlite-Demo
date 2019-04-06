@@ -9,40 +9,52 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="MembeInfo"/>
+        android:text="MembeInfo" />
+
     <EditText
+        android:id="@+id/id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="id"
-        android:id="@+id/id" />
+        android:hint="id" />
+
     <EditText
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="name"
-        android:id="@+id/name"/>
+        android:hint="name" />
+
     <EditText
+        android:id="@+id/PhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="PhoneNumber"
-        android:id="@+id/PhoneNumber" />
+        android:hint="PhoneNumber" />
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/addButton"
-        android:text="add"/>
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="add" />
+
+    <Button
         android:id="@+id/View"
-        android:text="View"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/delete"
-        android:text="Delete"/>
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/textView"/>
+        android:text="Update"
+        android:id="@+id/updateId"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
