@@ -35,7 +35,7 @@ public class DatabaseSqlite extends SQLiteOpenHelper {
         contentValues.put(COL_1,id);
         contentValues.put(COL_2,name);
         contentValues.put(COL_3,PhnNumber);
-        long results=db.insert(TABLE_NAME,null,contentValues);
+        db.insert(TABLE_NAME,null,contentValues);
         return true;
     }
 
