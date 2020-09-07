@@ -10,17 +10,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    EditText id,name,phnNum;
-    Button add,view,delete,update;
+    EditText id, name, phnNum;
+    Button add, view, delete, update;
     DatabaseSqlite myDb;
-TextView textView;
+    TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         initiateAll();
-        myDb=new DatabaseSqlite(this);
+        myDb = new DatabaseSqlite(this);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,21 +52,19 @@ TextView textView;
     }
 
 
-
-
     public void ViewData() {
         textView.setText("");
-        Cursor res=myDb.getAllData();
-        if(res.getCount() == 0) {
+        Cursor res = myDb.getAllData();
+        if (res.getCount() == 0) {
             // show message
             textView.setText("No Data Found");
             return;
         }
 
-        while (res.moveToNext()){
-            textView.append("ID:"+res.getString(0)+"\n");
-            textView.append("Name:"+res.getString(1)+"\n");
-            textView.append("Phone Number:"+res.getString(2)+"\n\n");
+        while (res.moveToNext()) {
+            textView.append("ID:" + res.getString(0) + "\n");
+            textView.append("Name:" + res.getString(1) + "\n");
+            textView.append("Phone Number:" + res.getString(2) + "\n\n");
 
 
         }
@@ -77,36 +76,34 @@ TextView textView;
     }
 
     public void AddData() {
-        boolean isInsert=(myDb.insertData(id.getText().toString(),name.getText().toString(),phnNum.getText().toString()));
-        if (isInsert=true){
-            Toast.makeText(MainActivity.this,"Data insert",Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(MainActivity.this,"Data not Insert",Toast.LENGTH_SHORT).show();
+        boolean isInsert = (myDb.insertData(id.getText().toString(), name.getText().toString(), phnNum.getText().toString()));
+        if (isInsert = true) {
+            Toast.makeText(MainActivity.this, "Data insert", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(MainActivity.this, "Data not Insert", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void initiateAll(){
-        id=findViewById(R.id.id);
-        name=findViewById(R.id.name);
-        phnNum=findViewById(R.id.PhoneNumber);
-        add=findViewById(R.id.addButton);
-        view=findViewById(R.id.View);
-        textView=findViewById(R.id.textView);
-        delete=findViewById(R.id.delete);
-        update=findViewById(R.id.updateId);
+    public void initiateAll() {
+        id = findViewById(R.id.id);
+        name = findViewById(R.id.name);
+        phnNum = findViewById(R.id.PhoneNumber);
+        add = findViewById(R.id.addButton);
+        view = findViewById(R.id.View);
+        textView = findViewById(R.id.textView);
+        delete = findViewById(R.id.delete);
+        update = findViewById(R.id.updateId);
     }
+
     public void update() {
-        boolean isInsert=(myDb.update(id.getText().toString(),name.getText().toString(),phnNum.getText().toString()));
-        if (isInsert=true){
-            Toast.makeText(MainActivity.this,"Data Update successfull",Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(MainActivity.this,"Data update unsuccessfull",Toast.LENGTH_SHORT).show();
-        }
+        myDb.update(id.getText().toString(), name.getText().toString(), phnNum.getText().toString());
+
+        Toast.makeText(MainActivity.this, "Data Update successfull", Toast.LENGTH_SHORT).show();
+
 
     }
-    private void clearText(){
+
+    private void clearText() {
         id.setText("");
         name.setText("");
         phnNum.setText("");
