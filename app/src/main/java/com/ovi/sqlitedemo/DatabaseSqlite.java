@@ -12,7 +12,8 @@ public class DatabaseSqlite extends SQLiteOpenHelper {
     public static final String COL_1 = "ID";
     public static final String COL_2 = "NAME";
     public static final String COL_3 = "PhnNumber";
-    public static final int DbVersion=1;
+    public static final String COL_4 = "Address";
+    public static final int DbVersion=2;
 
     DatabaseSqlite(Context context){
         super(context,DataBase_Name,null,DbVersion);
@@ -20,7 +21,7 @@ public class DatabaseSqlite extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Create Table "+TABLE_NAME+ "(ID INTEGER PRIMARY KEY ,NAME TEXT,PhnNumber TEXT)");
+        db.execSQL("Create Table "+TABLE_NAME+ "(ID INTEGER PRIMARY KEY ,NAME TEXT,PhnNumber TEXT,Address TEXT)");
     }
 
     @Override
@@ -29,12 +30,13 @@ public class DatabaseSqlite extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String id,String name,String PhnNumber){
+    public boolean insertData(String id,String name,String PhnNumber,String address){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(COL_1,id);
         contentValues.put(COL_2,name);
         contentValues.put(COL_3,PhnNumber);
+        contentValues.put(COL_4,address);
         db.insert(TABLE_NAME,null,contentValues);
         return true;
     }

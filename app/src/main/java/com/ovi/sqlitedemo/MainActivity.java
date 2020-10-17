@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         while (res.moveToNext()) {
             textView.append("ID:" + res.getString(0) + "\n");
             textView.append("Name:" + res.getString(1) + "\n");
+            textView.append("Address:" + res.getString(3) + "\n");
             textView.append("Phone Number:" + res.getString(2) + "\n\n");
 
 
@@ -76,12 +77,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void AddData() {
-        boolean isInsert = (myDb.insertData(id.getText().toString(), name.getText().toString(), phnNum.getText().toString()));
-        if (isInsert = true) {
+        myDb.insertData(id.getText().toString(), name.getText().toString(), phnNum.getText().toString(),"Dhaka");
+        //if (isInsert = true) {
             Toast.makeText(MainActivity.this, "Data insert", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(MainActivity.this, "Data not Insert", Toast.LENGTH_SHORT).show();
-        }
+
     }
 
     public void initiateAll() {
